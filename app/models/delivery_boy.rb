@@ -1,0 +1,2 @@
+class DeliveryBoy < ApplicationRecord
+end

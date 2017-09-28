@@ -1,0 +1,18 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @food_item.name
+p
+  strong Item image:
+  = @food_item.item_image
+p
+  strong Food type:
+  = @food_item.food_type
+p
+  strong Locality:
+  = @food_item.locality_id
+
+= link_to 'Edit', edit_food_item_path(@food_item)
+'  |
+= link_to 'Back', food_items_path

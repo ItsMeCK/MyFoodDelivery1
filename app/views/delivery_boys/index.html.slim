@@ -1,0 +1,25 @@
+h1 Listing delivery_boys
+
+table
+  thead
+    tr
+      th Name
+      th Mobile
+      th Locality
+      th
+      th
+      th
+
+  tbody
+    - @delivery_boys.each do |delivery_boy|
+      tr
+        td = delivery_boy.name
+        td = delivery_boy.mobile
+        td = delivery_boy.locality_id
+        td = link_to 'Show', delivery_boy
+        td = link_to 'Edit', edit_delivery_boy_path(delivery_boy)
+        td = link_to 'Destroy', delivery_boy, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Delivery boy', new_delivery_boy_path

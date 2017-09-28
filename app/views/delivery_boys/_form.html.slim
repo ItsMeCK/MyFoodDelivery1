@@ -1,0 +1,18 @@
+= form_for @delivery_boy do |f|
+  - if @delivery_boy.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@delivery_boy.errors.count, "error")} prohibited this delivery_boy from being saved:"
+      ul
+        - @delivery_boy.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :mobile
+    = f.text_field :mobile
+  .field
+    = f.label :locality_id
+    = f.number_field :locality_id
+  .actions = f.submit

@@ -1,0 +1,35 @@
+.jumbotron
+  .container.text-center
+    h2 Online Food
+    p Mission, Vision & Values
+nav.navbar.navbar-inverse role="navigation"
+  .navbar-header
+    button.navbar-toggle data-target="food" data-toggle="collapse" type="button"
+      span.sr-only Toggle navigation
+      span.icon-bar
+      span.icon-bar
+      span.icon-bar
+    = link_to 'Home', root_path, class: 'navbar-brand'
+  .collapse.navbar-collapse#food
+    ul.nav.navbar-nav.navbar-right
+      li
+        span.glyphicon.glyphicon-shopping-cart &nbsp;
+        span.cart-text= link_to "#{current_order.order_items.size} Items in Cart ( #{number_to_currency (current_order.subtotal || 0), unit: ''} )", cart_path
+      - if current_user
+        li
+          span.glyphicon.glyphicon-user &nbsp;
+          span= link_to current_user.email, 'javascript:;', class: 'nav-item nav-link'
+        li
+          span.glyphicon.glyphicon-eye-open &nbsp;
+          span= link_to 'Your Orders', orders_path, class: 'nav-item nav-link'
+        li
+          span.glyphicon.glyphicon-log-out &nbsp;
+          span= link_to 'Log out', destroy_user_session_path, method: :delete, class: 'nav-item nav-link'
+      - else
+        li
+          span.glyphicon.glyphicon-log-in &nbsp;
+          span= link_to 'Log In', new_user_session_path, class: 'nav-item nav-link'
+        li
+          span.glyphicon.glyphicon-log-in &nbsp;
+          span= link_to "Sign up", new_user_registration_path, class: 'nav-item nav-link'
+

@@ -1,0 +1,21 @@
+h1 Listing localities
+
+table
+  thead
+    tr
+      th Locality name
+      th
+      th
+      th
+
+  tbody
+    - @localities.each do |locality|
+      tr
+        td = locality.locality_name
+        td = link_to 'Show', locality
+        td = link_to 'Edit', edit_locality_path(locality)
+        td = link_to 'Destroy', locality, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Locality', new_locality_path

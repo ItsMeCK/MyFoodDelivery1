@@ -1,0 +1,30 @@
+- @address = @adrdress.present? ? @address : Address.new
+.row
+  .col-xs-12.col-sm-6.col-sm-offset-3
+    p.custom_header Add new address
+
+    = form_for @address, remote: true, html: {class: 'form-horizontal'} do |f|
+      - if @address.errors.any?
+        #error_explanation
+          h2 = "#{pluralize(@address.errors.count, "error")} prohibited this address from being saved:"
+          ul
+            - @address.errors.full_messages.each do |message|
+              li = message
+
+      .field.form-group
+        = f.label :locality_id
+        = f.select :locality_id, Locality.all.collect {|l| [l.locality_name, l.id]}, {}, class: 'form-control'
+      .field.form-group
+        = f.label :building_name
+        = f.text_field :building_name, class: 'form-control'
+      .field.form-group
+        = f.label :address1
+        = f.text_field :address1, class: 'form-control'
+      .field.form-group
+        = f.label :address2
+        = f.text_field :address2, class: 'form-control'
+      .field.form-group
+        = f.label :pincode
+        = f.number_field :pincode, class: 'form-control'
+      .form-group.actions.tx-center.mrg20tp
+        = f.submit 'Add address', class: 'btn btn-success'

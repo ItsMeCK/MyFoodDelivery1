@@ -1,0 +1,24 @@
+p#notice = notice
+
+p
+  strong User:
+  = @order.user_id
+p
+  strong Address:
+  = @order.address_id
+p
+  strong Time slot:
+  = @order.time_slot_id
+p
+  strong Delivery boy:
+  = @order.delivery_boy_id
+p
+  strong Status:
+  = @order.status
+p
+  strong Payment:
+  = @order.payment_id
+
+= link_to 'Edit', edit_order_path(@order)
+'  |
+= link_to 'Back', orders_path

@@ -1,0 +1,27 @@
+h1 Listing food_items
+
+table
+  thead
+    tr
+      th Name
+      th Item image
+      th Food type
+      th Locality
+      th
+      th
+      th
+
+  tbody
+    - @food_items.each do |food_item|
+      tr
+        td = food_item.name
+        td = food_item.item_image
+        td = food_item.food_type
+        td = food_item.locality_id
+        td = link_to 'Show', food_item
+        td = link_to 'Edit', edit_food_item_path(food_item)
+        td = link_to 'Destroy', food_item, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Food item', new_food_item_path

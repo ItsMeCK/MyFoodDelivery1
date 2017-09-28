@@ -1,0 +1,9 @@
+p#notice = notice
+
+p
+  strong Locality name:
+  = @locality.locality_name
+
+= link_to 'Edit', edit_locality_path(@locality)
+'  |
+= link_to 'Back', localities_path

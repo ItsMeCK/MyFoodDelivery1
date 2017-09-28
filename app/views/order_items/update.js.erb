@@ -1,0 +1,2 @@
+$(".cart-text").html("<%= escape_javascript(render 'layouts/cart_text') %>")
+$("#item_price_" + "<%= @order_item.id %>").html("<%= escape_javascript(render 'carts/item_price', order_item: @order_item) %>")
