@@ -1,20 +1,20 @@
 .container
   .row
-    - cache 'recent_items'
-      - FoodItem.all_food_items.each do |item|
-        .col-sm-4
-          .panel.panel-primary
-            .panel-heading= item.name
-            .panel-body
-              img.img-responsive src="https://placehold.it/150x80?text=IMAGE" style="width:100%" alt="Image"
-            .panel-footer
-                = form_for @order_item, remote: true do |f|
-                  .row
-                    .col-sm-4
-                      = f.number_field :quantity, value: 1, class: "form-control", min: 1
-                    .col-sm-4
-                        = f.hidden_field :food_item_id, value: item.id
-                        = f.submit "Add to Cart", class: "btn btn-success"
+    / - cache 'recent_items'
+    - FoodItem.all_food_items.each do |item|
+      .col-sm-4
+        .panel.panel-primary
+          .panel-heading= item.name
+          .panel-body
+            img.img-responsive src="https://placehold.it/150x80?text=IMAGE" style="width:100%" alt="Image"
+          .panel-footer
+              = form_for @order_item, remote: true do |f|
+                .row
+                  .col-sm-4
+                    = f.number_field :quantity, value: 1, class: "form-control", min: 1
+                  .col-sm-4
+                      = f.hidden_field :food_item_id, value: item.id
+                      = f.submit "Add to Cart", class: "btn btn-success"
 br
 br
 .container-fluid.text-center
