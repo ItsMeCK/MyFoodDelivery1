@@ -16,9 +16,8 @@ table
   tbody
     - @orders.each do |order|
       tr
-        td = order.user_id
-        td = order.address_id
-        td = order.time_slot_id
-        td = order.delivery_boy_id
+        td = order.address_id.address1
+        td = order.time_slot_id.start_time.strftime("%H:%M") + '-' + order.time_slot_id.end_time.strftime("%H:%M")
+        td = order.delivery_boy_id.try(:name) || 'Not Allocated'
         td = order.status
         td = order.payment_id
