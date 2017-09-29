@@ -1,10 +1,14 @@
 class Order < ApplicationRecord
 	has_many :order_items
 	before_save :update_subtotal
-	has_one :time_slot
+	belongs_to :time_slot, optional: true
 	has_many :food_items, through: :order_items
-	has_one :delivery_boy
+	belongs_to :delivery_boy, optional: true
+	belongs_to :address, optional: true
 	validates :address_id, :user_id, presence: true, :if => :before_placing_order
+	# validates :time_slot, presence: true, allow_nil: true
+	# validates :address, presence: true, allow_nil: true
+	# validates :delivery_boy, presence: true, allow_nil: true
 
 	def self.process_order(object_id)
 		order = Order.find_by_id(object_id)
@@ -22,7 +26,7 @@ class Order < ApplicationRecord
 	end
 
 	private
-	
+
 	def update_subtotal
 	  self[:total] = subtotal
 	end
